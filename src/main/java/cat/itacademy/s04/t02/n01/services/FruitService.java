@@ -33,6 +33,7 @@ public class FruitService {
     }
     
     public Fruit updateFruit(int id, Fruit fruit) {
+        /*
         return fruitRepository.findById(id)
                 .map(existingFruit -> {
                     existingFruit.setName(fruit.getName());
@@ -40,6 +41,10 @@ public class FruitService {
                     return fruitRepository.save(existingFruit);  // Guarda los cambios
                 })
                 .orElseThrow(() -> new FruitNotFoundException("Fruit not found with id: " + id));
+        */
+        fruitRepository.findById(id).orElseThrow(() -> new FruitNotFoundException("Fruit not found with id: " + id));
+        fruit.setId(id);
+        return fruitRepository.save(fruit);
     }
     
     public void deleteFruit(int id) {
