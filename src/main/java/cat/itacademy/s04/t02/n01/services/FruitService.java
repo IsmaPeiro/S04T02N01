@@ -5,6 +5,7 @@ import cat.itacademy.s04.t02.n01.model.Fruit;
 import cat.itacademy.s04.t02.n01.repository.FruitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -33,7 +34,6 @@ public class FruitService {
     }
     
     public Fruit updateFruit(int id, Fruit fruit) {
-        /*
         return fruitRepository.findById(id)
                 .map(existingFruit -> {
                     existingFruit.setName(fruit.getName());
@@ -41,10 +41,6 @@ public class FruitService {
                     return fruitRepository.save(existingFruit);  // Guarda los cambios
                 })
                 .orElseThrow(() -> new FruitNotFoundException("Fruit not found with id: " + id));
-        */
-        fruitRepository.findById(id).orElseThrow(() -> new FruitNotFoundException("Fruit not found with id: " + id));
-        fruit.setId(id);
-        return fruitRepository.save(fruit);
     }
     
     public void deleteFruit(int id) {
